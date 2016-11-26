@@ -53,8 +53,8 @@ class Pipe implements ServerMiddlewareInterface
 
         return $current(
             $request,
-            function (RequestInterface $request) use ($index, $finalHandler) {
-                return $this->processMiddleware($index + 1, $request, $finalHandler);
+            function (RequestInterface $req) use ($index, $finalHandler) {
+                return $this->processMiddleware($index + 1, $req, $finalHandler);
             }
         );
     }
