@@ -4,7 +4,6 @@ namespace Schnittstabil\Psr\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\RequestInterface;
 use Interop\Http\Middleware\ServerMiddlewareInterface;
 
 /**
@@ -53,7 +52,7 @@ class Pipe implements ServerMiddlewareInterface
 
         return $current(
             $request,
-            function (RequestInterface $req) use ($index, $finalHandler) {
+            function (ServerRequestInterface $req) use ($index, $finalHandler) {
                 return $this->processMiddleware($index + 1, $req, $finalHandler);
             }
         );
